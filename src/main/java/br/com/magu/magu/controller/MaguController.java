@@ -11,6 +11,8 @@ import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.CardToken;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,11 @@ public class MaguController {
 
     @GetMapping("/client")
     @ApiOperation(value = "Get Client")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Retorna dados do Cliente"),
+            @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
+    })
     public ResponseEntity<ClientResponseDTO> getClientMP(@RequestBody ClientRequest email) throws IOException, ErrorsException {
         return ResponseEntity.ok(clientService.getCustomerClient(email));
     }
