@@ -12,5 +12,5 @@ import java.io.IOException;
 @Configurable
 public interface ClientService {
 
-    ClientResponseDTO getCustomerClient(ClientRequest email) throws IOException, ErrorsException;
+    ClientResponseDTO getCustomerClient(String email) throws IOException, ErrorsException;
 }
