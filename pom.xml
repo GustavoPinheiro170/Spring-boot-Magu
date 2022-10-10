@@ -69,13 +69,34 @@
             <artifactId>spring-plugin-core</artifactId>
             <version>2.0.0.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+        </dependency>
     </dependencies>
+    <profiles>
+        <profile>
+            <id>ENV_LOCAL</id>
+            <properties>
+                <activatedProperties>local</activatedProperties>
+                <urlMp>https://api.mercadopago.com</urlMp>
+            </properties>
+        </profile>
+    </profiles>
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
         </plugins>
     </build>
 
