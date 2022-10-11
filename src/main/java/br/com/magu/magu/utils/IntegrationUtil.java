@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.internal.Errors;
 import com.google.inject.internal.ErrorsException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,9 @@ import java.util.Map;
 
 public class IntegrationUtil {
 
+    @Value("${access.token}")
+    private String acessToken;
+
     public <T>ResponseEntity<T> getRestCall(String curl, String Method, String Body, TypeReference<T> referenceType) throws IOException, ErrorsException {
         URL url = new URL(curl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -28,8 +32,8 @@ public class IntegrationUtil {
         connection.setRequestMethod(Method);
         connection.setDoOutput( true );
         connection.setDoInput(true);
-        connection.setRequestProperty("Accept", "application/json");
-        connection.setRequestProperty("Authorization",  "Bearer TEST-1111532151519208-112707-af85addc21cb7eb4eaf4438217a2c95b-248275892");
+        connection.setRequestProperty("Accept", "application/json");2
+        connection.setRequestProperty("Authorization",  "Bearer " + acessToken);
         for(Map.Entry<String, String> entry: mapHeaders.entrySet()){
             connection.setRequestProperty(entry.getKey(), entry.getValue());
         }
