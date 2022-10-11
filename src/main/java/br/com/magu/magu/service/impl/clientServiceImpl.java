@@ -51,9 +51,8 @@ public class clientServiceImpl implements ClientService {
         if(response.getBody() != null && response.getBody().getResults().size() != 0){
             return response.getBody();
         }
-        return null ;
+        return null;
 
-        return response.getBody();
     }
 
     public Customer createClient(CustomerRequest clientRequest ) throws MPException, MPApiException {
