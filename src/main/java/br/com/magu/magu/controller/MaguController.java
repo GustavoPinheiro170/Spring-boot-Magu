@@ -1,9 +1,9 @@
 package br.com.magu.magu.controller;
 
+import br.com.magu.magu.Api.ClientsApi;
 import br.com.magu.magu.models.Clients.ClientResponseDTO;
 import br.com.magu.magu.service.CardsService;
 import br.com.magu.magu.service.ClientService;
-import com.google.inject.internal.ErrorsException;
 import com.mercadopago.client.cardtoken.CardTokenRequest;
 import com.mercadopago.exceptions.MPApiException;
 import com.mercadopago.exceptions.MPException;
@@ -16,36 +16,29 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+
 import java.io.IOException;
 
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/magu")
 @Api(value = "API Rest Magu")
-@CrossOrigin("*")
-public class MaguController {
-    @Autowired private ClientService clientService;
-    @Autowired private CardsService cardsService;
+
+public class MaguController implements ClientsApi {
+    @Autowired
+    private ClientService clientService;
+    @Autowired
+    private CardsService cardsService;
 
     @GetMapping("/client")
-    @ApiOperation(value = "Get Client")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Ok", response = String.class),
-            @ApiResponse(code = 400, message = "Bad request", response = Error.class),
-            @ApiResponse(code = 404, message = "Not found", response = Error.class),
-            @ApiResponse(code = 500, message = "Internal error", response = Error.class)
-    })
-    public ResponseEntity<ClientResponseDTO> getClientbyEmailMP( @RequestParam String email) throws IOException, ErrorsException {
+    public ResponseEntity<ClientResponseDTO> getClientbyEmailMP(@RequestParam String email) throws MPException, MPApiException {
         ClientResponseDTO clientResponseDTO = clientService.getCustomerClient(email);
-
-        if(clientResponseDTO == null){
-            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (clientResponseDTO == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return  new ResponseEntity<>(clientResponseDTO,HttpStatus.OK);
+        return new ResponseEntity<>(clientResponseDTO, HttpStatus.OK);
     }
 
     @PostMapping("/create_card")
