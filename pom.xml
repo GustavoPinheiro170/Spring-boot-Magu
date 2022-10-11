@@ -81,6 +81,7 @@
             <properties>
                 <activatedProperties>local</activatedProperties>
                 <urlMp>https://api.mercadopago.com</urlMp>
+                <acessToken>TEST-635016698785027-101013-7701abb428eab6e16008965e42e29ec6-140930586</acessToken>
             </properties>
         </profile>
     </profiles>

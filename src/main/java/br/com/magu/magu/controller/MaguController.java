@@ -32,7 +32,6 @@ public class MaguController {
     @Autowired private CardsService cardsService;
 
     @GetMapping("/client")
-    @RequestMapping(path = "/client", method = RequestMethod.GET)
     @ApiOperation(value = "Get Client")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Ok", response = String.class),
@@ -60,4 +59,5 @@ public class MaguController {
 
         return ResponseEntity.ok(cardsService.createCard(request));
     }
+
 }
