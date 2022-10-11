@@ -28,34 +28,36 @@ import java.time.ZoneOffset;
 
 public class clientServiceImpl implements ClientService {
     private static final Logger logger = LoggerFactory.getLogger(clientServiceImpl.class);
-    private static final  TypeReference<ClientResponseDTO> clientResponse = new TypeReference<>() {};
+    private static final TypeReference<ClientResponseDTO> clientResponse = new TypeReference<>() {
+    };
 
     @Value("${url.mp}")
     private String urlMp;
 
-    @Autowired private IntegrationUtil integrationUtil;
+    @Autowired
+    private IntegrationUtil integrationUtil;
 
     @SneakyThrows
     @Override
-    public ClientResponseDTO getCustomerClient(String email) throws IOException, ErrorsException {
+    public ClientResponseDTO getCustomerClient(String email) throws MPException, MPApiException {
 
         logger.info("Calling Client By Email MP");
 
-        ResponseEntity<ClientResponseDTO> response =
-                    integrationUtil.getRestCall(
-                            urlMp + "/v1/customers/search?email=" + email ,
-                            "GET",
-                            null,
-                            clientResponse);
 
-        if(response.getBody() != null && response.getBody().getResults().size() != 0){
+        ResponseEntity<ClientResponseDTO> response =
+                integrationUtil.getRestCall(
+                        urlMp + "/v1/customers/search?email=" + email,
+                        "GET",
+                        null,
+                        clientResponse);
+
+        if (response.getBody() != null && response.getBody().getResults().size() != 0) {
             return response.getBody();
         }
         return null;
-
     }
 
-    public Customer createClient(CustomerRequest clientRequest ) throws MPException, MPApiException {
+    public Customer createClient(CustomerRequest clientRequest) throws MPException, MPApiException {
 
         logger.info("Calling Create Client");
 
@@ -84,7 +86,7 @@ public class clientServiceImpl implements ClientService {
                         .description(clientRequest.getDescription())
                         .defaultCard(clientRequest.getDefaultCard())
                         .build();
-       return client.create(customerRequest);
+        return client.create(customerRequest);
     }
 
 

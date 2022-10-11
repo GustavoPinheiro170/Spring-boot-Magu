@@ -2,6 +2,8 @@ package br.com.magu.magu.Api;
 
 import br.com.magu.magu.models.Clients.ClientResponseDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mercadopago.exceptions.MPApiException;
+import com.mercadopago.exceptions.MPException;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Optional;
 
+@CrossOrigin("*")
 @Api(value = "Get Client Informations")
 @RequestMapping(value = "/client")
+
 public interface ClientsApi {
 
     Logger log = LoggerFactory.getLogger(ClientsApi.class);
@@ -43,11 +47,11 @@ public interface ClientsApi {
             @ApiResponse(code = 400, message = "Bad request", response = Error.class),
             @ApiResponse(code = 404, message = "Not found", response = Error.class),
             @ApiResponse(code = 500, message = "Internal error", response = Error.class)})
-    @RequestMapping(value = "bb/quotation/authorize",
+    @RequestMapping(value = "/client",
             produces = {"application/json"},
             method = RequestMethod.GET)
-    default ResponseEntity<ClientResponseDTO> getClientbyEmailMP(
-            @Valid @RequestHeader(value = "email", required = true) String email) {
+    default ResponseEntity<ClientResponseDTO> getClientbyEmailMP (
+            @Valid @RequestHeader(value = "email", required = true) String email) throws MPException, MPApiException  {
 
         if (getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
         } else {
