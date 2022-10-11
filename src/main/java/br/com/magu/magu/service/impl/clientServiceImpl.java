@@ -56,6 +56,9 @@ public class clientServiceImpl implements ClientService {
     }
 
     public Customer createClient(CustomerRequest clientRequest ) throws MPException, MPApiException {
+
+        logger.info("Calling Create Client");
+
         CustomerClient client = new CustomerClient();
         CustomerRequest customerRequest =
                 CustomerRequest.builder()

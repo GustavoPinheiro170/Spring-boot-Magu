@@ -22,6 +22,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
@@ -75,6 +76,13 @@
             <version>2.0.1.Final</version>
         </dependency>
     </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub MAGU Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/GustavoPinheiro170/Spring-boot-Magu</url>
+        </repository>
+    </distributionManagement>
     <profiles>
         <profile>
             <id>ENV_LOCAL</id>
