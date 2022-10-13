@@ -1,5 +1,6 @@
 package br.com.magu.magu.repository.controller;
 
+import br.com.magu.magu.Api.LogsApi;
 import br.com.magu.magu.repository.service.LogsService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
@@ -14,8 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/magu")
-@Api(value = "API Rest Magu")
-public class LogsController  {
+public class LogsController implements LogsApi {
 
     @Autowired LogsService logsService;
 

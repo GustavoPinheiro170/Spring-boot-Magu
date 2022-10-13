@@ -48,7 +48,7 @@ public class clientServiceImpl implements ClientService {
     public ClientResponseDTO getCustomerClient(String email) throws MPException, MPApiException {
 
         logger.info("Calling Client By Email MP");
-        logsService.inrLog("Default" , "getCustomerClient");
+        logsService.inrLog(email , "getCustomerClient");
 
 
         ResponseEntity<ClientResponseDTO> response =
