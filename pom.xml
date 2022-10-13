@@ -81,15 +81,20 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jdbc</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.oracle.database.jdbc</groupId>-->
+<!--            <artifactId>ojdbc8</artifactId>-->
+<!--            <version>21.7.0.0</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.oracle.database.jdbc</groupId>-->
+<!--            <artifactId>ucp</artifactId>-->
+<!--            <version>21.7.0.0</version>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>com.oracle.database.jdbc</groupId>
-            <artifactId>ojdbc8</artifactId>
-            <version>21.7.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.oracle.database.jdbc</groupId>
-            <artifactId>ucp</artifactId>
-            <version>21.7.0.0</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.5.0</version>
         </dependency>
     </dependencies>
     <distributionManagement>
@@ -106,12 +111,9 @@
                 <activatedProperties>local</activatedProperties>
                 <urlMp>https://api.mercadopago.com</urlMp>
                 <acessToken>TEST-635016698785027-101013-7701abb428eab6e16008965e42e29ec6-140930586</acessToken>
-                <datasource.username>CORPD0</datasource.username>
+                <datasource.username>magustore</datasource.username>
                 <datasource.password>GA071194</datasource.password>
-                <datasource.url>jdbc:oracle:thin:@//localhost:1521/xe</datasource.url>
-                <datasource.classname>oracle.jdbc.OracleDriver</datasource.classname>
-                <datasource.minpool>0</datasource.minpool>
-                <datasource.maxpool>2</datasource.maxpool>
+                <datasource.url>jdbc:postgresql://localhost:5432/CORPD0</datasource.url>
             </properties>
         </profile>
     </profiles>

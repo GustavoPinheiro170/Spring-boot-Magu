@@ -1,6 +1,8 @@
 package br.com.magu.magu.service.impl;
 
 import br.com.magu.magu.models.Clients.ClientResponseDTO;
+import br.com.magu.magu.repository.impl.LogsDAO;
+import br.com.magu.magu.repository.service.LogsService;
 import br.com.magu.magu.service.ClientService;
 import br.com.magu.magu.utils.IntegrationUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -37,11 +39,16 @@ public class clientServiceImpl implements ClientService {
     @Autowired
     private IntegrationUtil integrationUtil;
 
+    @Autowired
+    private LogsService logsService;
+
+
     @SneakyThrows
     @Override
     public ClientResponseDTO getCustomerClient(String email) throws MPException, MPApiException {
 
         logger.info("Calling Client By Email MP");
+        logsService.inrLog("Default" , "getCustomerClient");
 
 
         ResponseEntity<ClientResponseDTO> response =

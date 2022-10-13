@@ -1,5 +1,7 @@
 package br.com.magu.magu.config;
 
+import br.com.magu.magu.repository.impl.LogsDAO;
+import br.com.magu.magu.repository.service.LogsService;
 import br.com.magu.magu.service.CardsService;
 import br.com.magu.magu.service.ClientService;
 import br.com.magu.magu.service.impl.cardsServiceImpl;
@@ -33,5 +35,8 @@ public class RestTemplate {
 
     @Bean
     CardTokenClient cardTokenClient() { return new CardTokenClient();}
+
+    @Bean
+    LogsService logsService() {return  new LogsDAO();}
 
 }
