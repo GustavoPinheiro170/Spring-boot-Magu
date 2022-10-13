@@ -22,7 +22,10 @@
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
@@ -44,7 +47,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -75,6 +77,25 @@
             <artifactId>validation-api</artifactId>
             <version>2.0.1.Final</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jdbc</artifactId>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.oracle.database.jdbc</groupId>-->
+<!--            <artifactId>ojdbc8</artifactId>-->
+<!--            <version>21.7.0.0</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.oracle.database.jdbc</groupId>-->
+<!--            <artifactId>ucp</artifactId>-->
+<!--            <version>21.7.0.0</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.5.0</version>
+        </dependency>
     </dependencies>
     <distributionManagement>
         <repository>
@@ -90,6 +111,9 @@
                 <activatedProperties>local</activatedProperties>
                 <urlMp>https://api.mercadopago.com</urlMp>
                 <acessToken>TEST-635016698785027-101013-7701abb428eab6e16008965e42e29ec6-140930586</acessToken>
+                <datasource.username>magustore</datasource.username>
+                <datasource.password>GA071194</datasource.password>
+                <datasource.url>jdbc:postgresql://localhost:5432/CORPD0</datasource.url>
             </properties>
         </profile>
     </profiles>
