@@ -1,6 +1,7 @@
 package br.com.magu.magu.Api;
 
 import br.com.magu.magu.models.Clients.ClientResponseDTO;
+import br.com.magu.magu.repository.model.Logs;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mercadopago.exceptions.MPApiException;
 import com.mercadopago.exceptions.MPException;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin("*")
@@ -36,12 +38,14 @@ public interface LogsApi {
     }
 
 
+
     @ApiOperation(value = "",
-            nickname = "Clients",
-            notes = "This service get Clients Information",
+            nickname = "Logs",
+            notes = "This service get Logs Information",
             response = String.class,
             authorizations = {@Authorization(value = "basicAuth")},
             tags = {"Logs"})
+
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Ok", response = String.class),
             @ApiResponse(code = 400, message = "Bad request", response = Error.class),
@@ -49,7 +53,7 @@ public interface LogsApi {
             @ApiResponse(code = 500, message = "Internal error", response = Error.class)})
     @RequestMapping(value = "/logs",
             produces = {"application/json"},
-            method = RequestMethod.GET)
+            method = RequestMethod.POST)
     default ResponseEntity<HttpStatus> inputLog (
             @Valid @RequestParam(value = "apiName", required = true) String apiName ,  @Valid @RequestParam (value = "userName", required = true) String userName) throws Exception {
 
@@ -60,4 +64,27 @@ public interface LogsApi {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
+    @ApiOperation(value = "",
+            nickname = "Logs",
+            notes = "This service get Logs Information",
+            response = String.class,
+            authorizations = {@Authorization(value = "basicAuth")},
+            tags = {"Logs"})
+
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Ok", response = String.class),
+            @ApiResponse(code = 400, message = "Bad request", response = Error.class),
+            @ApiResponse(code = 404, message = "Not found", response = Error.class),
+            @ApiResponse(code = 500, message = "Internal error", response = Error.class)})
+    @RequestMapping(value = "/logs",
+            produces = {"application/json"},
+            method = RequestMethod.GET)
+    default ResponseEntity<List<Logs>>  getAllLogs () throws Exception {
+
+        if (getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
+        } else {
+            log.warn("ObjectMapper or HttpServletRequest not configured in default EventsVcrApi interface so no example is generated");
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    }
 }
