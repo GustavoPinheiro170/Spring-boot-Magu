@@ -1,9 +1,13 @@
 package br.com.magu.magu.repository.impl;
 
 
+import br.com.magu.magu.repository.model.Logs;
+import br.com.magu.magu.repository.model.LogsRowMapper;
 import br.com.magu.magu.repository.service.LogsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.List;
 
 
 public class LogsDAO implements LogsService {
@@ -16,6 +20,7 @@ public class LogsDAO implements LogsService {
         try {
             String sql1 = "SELECT COUNT(*) ID FROM LOG_API";
             Integer id = JdbcTemplate.queryForObject(sql1, Integer.class);
+
             String sql = " INSERT INTO LOG_API (api_name, user_name, local_data, id) values (? ,? , CURRENT_DATE, ? + 1 )";
             JdbcTemplate.update(sql, apiName, userName , id);
 
@@ -23,6 +28,19 @@ public class LogsDAO implements LogsService {
         } catch (Exception ex) {
             throw new Exception(ex.getMessage());
         }
+    }
+
+    @Override
+    public List<Logs> getAllLogs() throws Exception {
+       try{
+
+          String sql = "select *  from log_api  order by local_data desc;";
+           List<Logs>  logs = JdbcTemplate.query(sql, new LogsRowMapper());
+          return logs;
+
+       }catch (Exception ex){
+           throw new Exception(ex.getMessage());
+       }
     }
 
 }

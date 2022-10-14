@@ -33,13 +33,4 @@ public class DBConfig {
         return dataSourceBuilder.build();
     }
 
-    @Bean
-    public JdbcTemplate jdbcTemplate() {
-        return new JdbcTemplate(dataSource());
-    }
-
-    @Bean
-    public TransactionManager transactionManager() {
-        return new DataSourceTransactionManager(dataSource());
-    }
 }
