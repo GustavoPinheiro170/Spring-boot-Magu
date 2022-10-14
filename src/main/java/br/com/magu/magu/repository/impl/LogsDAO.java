@@ -34,12 +34,8 @@ public class LogsDAO implements LogsService {
     public List<Logs> getAllLogs() throws Exception {
        try{
 
-          String sql = "select *  from log_api "+
-           "order by local_data desc;";
-
-           List<Logs>  logs = JdbcTemplate.query(sql,
-                  new LogsRowMapper());
-
+          String sql = "select *  from log_api  order by local_data desc;";
+           List<Logs>  logs = JdbcTemplate.query(sql, new LogsRowMapper());
           return logs;
 
        }catch (Exception ex){

@@ -3,7 +3,6 @@ package br.com.magu.magu.repository.controller;
 import br.com.magu.magu.Api.LogsApi;
 import br.com.magu.magu.repository.model.Logs;
 import br.com.magu.magu.repository.service.LogsService;
-import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
