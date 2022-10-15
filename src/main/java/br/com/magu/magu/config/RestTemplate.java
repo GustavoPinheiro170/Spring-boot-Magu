@@ -1,7 +1,9 @@
 package br.com.magu.magu.config;
 
 import br.com.magu.magu.repository.impl.LogsDAO;
+import br.com.magu.magu.repository.impl.RegisterServiceDAO;
 import br.com.magu.magu.repository.service.LogsService;
+import br.com.magu.magu.repository.service.RegisterServices;
 import br.com.magu.magu.service.CardsService;
 import br.com.magu.magu.service.ClientService;
 import br.com.magu.magu.service.impl.cardsServiceImpl;
@@ -11,8 +13,6 @@ import com.mercadopago.client.cardtoken.CardTokenClient;
 import com.mercadopago.client.customer.CustomerClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.io.IOException;
 
 @Configuration
 public class RestTemplate {
@@ -38,5 +38,10 @@ public class RestTemplate {
 
     @Bean
     LogsService logsService() {return  new LogsDAO();}
+
+    @Bean
+    RegisterServices registerServices() {return  new RegisterServiceDAO();}
+
+
 
 }

@@ -1,6 +1,7 @@
-package br.com.magu.magu.repository.model;
+package br.com.magu.magu.repository.mapper;
 
 
+import br.com.magu.magu.repository.model.Logs;
 import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
