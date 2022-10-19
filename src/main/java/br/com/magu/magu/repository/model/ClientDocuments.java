@@ -8,6 +8,8 @@ import lombok.Setter;
 @Setter
 @Getter
 public class ClientDocuments {
+    public ClientDocuments(){};
+
     String documentType  = null;
     String documentNumber  = null;
 }

@@ -14,5 +14,5 @@ public class ClientAddress {
     String city  = null;
     String state  = null;
     String zipCode  = null;
-    String number  = null;
+    Integer number  = null;
 }
