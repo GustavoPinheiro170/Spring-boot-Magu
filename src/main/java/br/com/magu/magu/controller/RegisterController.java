@@ -1,7 +1,7 @@
-package br.com.magu.magu.repository.controller;
+package br.com.magu.magu.controller;
 
 import br.com.magu.magu.repository.model.ClientRegister;
-import br.com.magu.magu.repository.service.RegisterServices;
+import br.com.magu.magu.service.RegisterServices;
 import br.com.magu.magu.utils.ErrorsStack;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

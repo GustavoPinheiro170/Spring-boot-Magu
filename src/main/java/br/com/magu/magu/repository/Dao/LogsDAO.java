@@ -1,9 +1,9 @@
-package br.com.magu.magu.repository.impl;
+package br.com.magu.magu.repository.Dao;
 
 
 import br.com.magu.magu.repository.model.Logs;
 import br.com.magu.magu.repository.mapper.LogsRowMapper;
-import br.com.magu.magu.repository.service.LogsService;
+import br.com.magu.magu.service.LogsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 

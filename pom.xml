@@ -96,6 +96,11 @@
             <artifactId>postgresql</artifactId>
             <version>42.5.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.6</version>
+        </dependency>
     </dependencies>
     <distributionManagement>
         <repository>
@@ -111,8 +116,8 @@
                 <activatedProperties>local</activatedProperties>
                 <urlMp>https://api.mercadopago.com</urlMp>
                 <acessToken>TEST-635016698785027-101013-7701abb428eab6e16008965e42e29ec6-140930586</acessToken>
-                <datasource.username>magustore</datasource.username>
-                <datasource.password>GA071194</datasource.password>
+                <datasource.username>postgres</datasource.username>
+                <datasource.password>admin</datasource.password>
                 <datasource.url>jdbc:postgresql://localhost:5432/CORPD0</datasource.url>
             </properties>
         </profile>

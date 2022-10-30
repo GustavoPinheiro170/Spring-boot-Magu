@@ -1,4 +1,4 @@
-package br.com.magu.magu.repository.service;
+package br.com.magu.magu.service;
 
 import br.com.magu.magu.repository.model.ClientRegister;
 import org.springframework.beans.factory.annotation.Configurable;

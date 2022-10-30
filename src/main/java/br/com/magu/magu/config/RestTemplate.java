@@ -1,13 +1,15 @@
 package br.com.magu.magu.config;
 
-import br.com.magu.magu.repository.impl.LogsDAO;
-import br.com.magu.magu.repository.impl.RegisterServiceDAO;
-import br.com.magu.magu.repository.service.LogsService;
-import br.com.magu.magu.repository.service.RegisterServices;
+import br.com.magu.magu.repository.Dao.LogsDAO;
+import br.com.magu.magu.repository.Dao.RegisterServiceDAO;
+import br.com.magu.magu.service.LogsService;
+import br.com.magu.magu.service.RegisterServices;
 import br.com.magu.magu.service.CardsService;
 import br.com.magu.magu.service.ClientService;
+import br.com.magu.magu.service.PaymentsService;
 import br.com.magu.magu.service.impl.cardsServiceImpl;
 import br.com.magu.magu.service.impl.clientServiceImpl;
+import br.com.magu.magu.service.impl.paymentServiceImpl;
 import br.com.magu.magu.utils.IntegrationUtil;
 import com.mercadopago.client.cardtoken.CardTokenClient;
 import com.mercadopago.client.customer.CustomerClient;
@@ -32,6 +34,9 @@ public class RestTemplate {
 
     @Bean
     CardsService cardsService() { return new cardsServiceImpl();}
+
+    @Bean
+    PaymentsService paymentsService() { return new paymentServiceImpl();}
 
     @Bean
     CardTokenClient cardTokenClient() { return new CardTokenClient();}

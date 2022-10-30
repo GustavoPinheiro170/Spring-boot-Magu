@@ -1,8 +1,8 @@
-package br.com.magu.magu.repository.controller;
+package br.com.magu.magu.controller;
 
 import br.com.magu.magu.Api.LogsApi;
 import br.com.magu.magu.repository.model.Logs;
-import br.com.magu.magu.repository.service.LogsService;
+import br.com.magu.magu.service.LogsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

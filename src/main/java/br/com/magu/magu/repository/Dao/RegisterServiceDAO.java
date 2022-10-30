@@ -1,14 +1,12 @@
-package br.com.magu.magu.repository.impl;
+package br.com.magu.magu.repository.Dao;
 
 
 import br.com.magu.magu.repository.mapper.RegistredClientRowMapper;
 import br.com.magu.magu.repository.model.ClientRegister;
-import br.com.magu.magu.repository.service.RegisterServices;
-import br.com.magu.magu.utils.ErrorsStack;
+import br.com.magu.magu.service.RegisterServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 
@@ -65,6 +63,9 @@ public class RegisterServiceDAO  implements RegisterServices  {
                     clientRegister.getClientDetails().getPassword(),
                     clientRegister.getClientDetails().getUser(),
                     clientRegister.getClientDetails().getEmail());
+
+            String id = "SELECT id FROM user_sign_in where users = ?";
+
 
             String sql2 = " INSERT INTO user_register ( name, last_name, document_type, document_number,  birth_date, id_user_sign_in_register ) " +
                     "VALUES( ? , ? , ? , ? , ?, (select id from user_sign_in order by id desc limit 1) ); ";

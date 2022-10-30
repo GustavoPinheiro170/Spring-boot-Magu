@@ -1,12 +1,10 @@
 package br.com.magu.magu.service.impl;
 
 import br.com.magu.magu.models.Clients.ClientResponseDTO;
-import br.com.magu.magu.repository.impl.LogsDAO;
-import br.com.magu.magu.repository.service.LogsService;
+import br.com.magu.magu.service.LogsService;
 import br.com.magu.magu.service.ClientService;
 import br.com.magu.magu.utils.IntegrationUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.google.inject.internal.ErrorsException;
 import com.mercadopago.client.common.IdentificationRequest;
 import com.mercadopago.client.common.PhoneRequest;
 import com.mercadopago.client.customer.CustomerAddressRequest;
@@ -15,7 +13,6 @@ import com.mercadopago.client.customer.CustomerRequest;
 import com.mercadopago.exceptions.MPApiException;
 import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.customer.Customer;
-import com.nimbusds.oauth2.sdk.client.ClientRegistrationResponse;
 import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 
-import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
