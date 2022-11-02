@@ -1,12 +1,9 @@
 package br.com.magu.magu.config;
 
 import br.com.magu.magu.repository.Dao.LogsDAO;
+import br.com.magu.magu.repository.Dao.ProductsDAO;
 import br.com.magu.magu.repository.Dao.RegisterServiceDAO;
-import br.com.magu.magu.service.LogsService;
-import br.com.magu.magu.service.RegisterServices;
-import br.com.magu.magu.service.CardsService;
-import br.com.magu.magu.service.ClientService;
-import br.com.magu.magu.service.PaymentsService;
+import br.com.magu.magu.service.*;
 import br.com.magu.magu.service.impl.cardsServiceImpl;
 import br.com.magu.magu.service.impl.clientServiceImpl;
 import br.com.magu.magu.service.impl.paymentServiceImpl;
@@ -46,6 +43,9 @@ public class RestTemplate {
 
     @Bean
     RegisterServices registerServices() {return  new RegisterServiceDAO();}
+
+    @Bean
+    ProductsService productsService() { return new ProductsDAO();}
 
 
 
