@@ -1,7 +1,9 @@
 package br.com.magu.magu.repository.Dao;
 
+import br.com.magu.magu.repository.mapper.InfoQtdCorRowMapper;
 import br.com.magu.magu.repository.mapper.ListaImagensRowMapper;
 import br.com.magu.magu.repository.mapper.ProductsRowMapper;
+import br.com.magu.magu.repository.model.Products.InfoQtdCor;
 import br.com.magu.magu.repository.model.Products.ListaImagens;
 import br.com.magu.magu.repository.model.Products.Products;
 import br.com.magu.magu.service.ProductsService;
@@ -43,6 +45,13 @@ public class ProductsDAO implements ProductsService {
 
         List<ListaImagens> listImagens = JdbcTemplate.query(queryImage, new ListaImagensRowMapper());
         product.setListaImagens(listImagens);
+
+        String queryQtCor = "select qt_prod as quantidade ," +
+                " color_prod as cor " +
+                " from tbl_estq where id_prod =" + product.getId();
+
+        List<InfoQtdCor> infoQtCor = JdbcTemplate.query(queryQtCor, new InfoQtdCorRowMapper());
+        product.setInfoQtdCores(infoQtCor);
 
         }
 

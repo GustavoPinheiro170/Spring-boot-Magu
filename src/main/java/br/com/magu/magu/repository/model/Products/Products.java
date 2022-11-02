@@ -19,9 +19,8 @@ public class Products {
     public String altura;
     public String largura;
     public String detalhe;
-    public String quantidade;
-    public List<String> cores;
     public String imagem;
     public List<ListaImagens> listaImagens;
+    public List<InfoQtdCor> infoQtdCores;
 
 }

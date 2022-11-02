@@ -17,7 +17,6 @@ public class ProductsRowMapper implements RowMapper<Products> {
                 .detalhe(rs.getString("detalhe"))
                 .formato(rs.getString("formato"))
                 .largura(rs.getString("largura"))
-                .quantidade(rs.getString("quantidade"))
                 .diametro(rs.getString("diametro"))
                 .build();
     return product;
